@@ -1,0 +1,51 @@
+<view class='page'>
+  <view class='page__hd'>
+    <canvas canvas-id="ringCanvas" class="canvas" bindtouchstart= "touchHandler" > </canvas>
+    <view class='topLeft'>
+      购买电量 
+      <view class='leftBar'></view>
+      <view class='electricityDate'>
+        <text style='color:#000;margin-right:10rpx'>{{purchased}}</text> <text>Mw.h</text>
+      </view>
+    </view>
+    <view class='topRight'>
+      已用电量
+      <view class='rightBar'></view>
+      <view class='electricityDate'>
+        <text style='color:#000;margin-right:10rpx'>{{actual_used}}</text> <text>Mw.h</text>
+      </view>
+    </view>    
+    <!-- <view> 调用stopAnimation终止动画，并监听渲染完成事件 </view>
+    <button type= "primary" bindtap="updateData" style="margin-top:30rpx"> 更新title </button> -->
+  </view>
+  <view class='page__bd'>
+    <view class="weui-flex mainNav">
+      <view class="weui-flex__item">
+        <navigator url='/pages/my/DeclarationRecord/electricity/electricity'>
+          <image src='/images/svg/icon_sbdl.svg' class='navIcon'></image>     
+          <view class="placeholder">申报电量</view>
+        </navigator>
+      </view>
+      <view class="weui-flex__item">
+        <navigator url='/pages/my/ElectricityBill/up/up'>
+          <image src='/images/svg/icon_scdfd.svg' class='navIcon'></image>
+          <view class="placeholder">上传电费单</view>
+        </navigator>
+      </view>
+      <view class="weui-flex__item" bindtap='toMon' style='padding: 0;padding-bottom:40rpx;'>
+        <view><!--url='/pages/login/login'-->
+          <image src='/images/svg/icon_hhjc.svg' class='navIcon'></image>
+          <view class="placeholder">户号检测</view>
+        </view>
+      </view>
+      <view class="weui-flex__item">
+        <navigator url='/pages/chat/chat'>
+          <image src='/images/svg/icon_yhlt.svg' class='navIcon'></image>
+          <view class="placeholder">用户论坛</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="weui-cells__title">月度偏差</view>
+    <canvas canvas-id="BarCanvas" class="canvas yueduCanvas" bindtouchstart="touchHandler1"></canvas>
+  </view>
+</view>

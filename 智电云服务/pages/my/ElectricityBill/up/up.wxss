@@ -1,0 +1,35 @@
+/* pages/my/ElectricityBill/up/up.wxss */
+.page {
+  padding-top: 30rpx;
+}
+.kefu {
+  background-color: #fff;
+  margin-bottom: 30rpx;
+}
+.weui-label {
+  width: 150rpx;
+}
+.weui-select {
+  border-right: 0;
+}
+
+.footer {
+  margin: 30rpx 40rpx;
+  text-align: center;
+}
+.footer text{
+  font-size: 10pt;
+  color:#999;
+}
+.footer button{
+  background-color: #0089f0;
+  color: #fff;
+  margin-top: 10rpx;
+}
+.delPic{
+  position: absolute;
+  top: 6rpx;
+  right: 30rpx;
+  color:#0089f0;
+  z-index: 111
+}

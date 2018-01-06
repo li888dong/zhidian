@@ -1,0 +1,5 @@
+<view class='page'>
+  
+  <image src='/images/施工.png'></image>
+  <view>页面施工中..........</view>
+</view>

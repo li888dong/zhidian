@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="36px" viewBox="0 0 22 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_mobile</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的企业" transform="translate(-38.000000, -1907.000000)" fill-rule="nonzero" fill="#888888">
+            <g id="表单/选择/多行列表-" transform="translate(0.000000, 1705.000000)">
+                <g id="列表三" transform="translate(1.000000, 176.000000)">
+                    <g id="手机-(1)" transform="translate(37.000000, 26.000000)">
+                        <path d="M17.7692308,0 L4.23076924,0 C1.89538463,0 0,1.83272725 0,4.09090907 L0,31.9090909 C0,34.1672728 1.89538463,36 4.23076924,36 L17.7692308,36 C20.1046154,36 22,34.1672727 22,31.9090909 L22,4.09090907 C22,1.83272725 20.1046154,0 17.7692308,0 Z M11,34.3636364 C9.59538465,34.3636364 8.46153848,33.2672727 8.46153848,31.9090909 C8.46153848,30.5509091 9.59538465,29.4545455 11,29.4545455 C12.4046154,29.4545455 13.5384616,30.5509091 13.5384616,31.9090909 C13.5384616,33.2672727 12.4046154,34.3636364 11,34.3636364 Z M18.6153846,27.8181818 L3.38461541,27.8181818 L3.38461541,4.90909091 L18.6153846,4.90909091 L18.6153846,27.8181818 Z" id="icon_mobile"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

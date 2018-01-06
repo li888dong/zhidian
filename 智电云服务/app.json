@@ -1,0 +1,62 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/analyze/analyze",
+    "pages/monitoring/monitoring",
+    "pages/my/my",
+    "pages/login/login",
+    "pages/my/myCompany/myCompany",
+    "pages/my/myCompany/maps/maps",
+    "pages/my/DeclarationRecord/DeclarationRecord",
+    "pages/my/DeclarationRecord/DeclarationRecordLog/DeclarationRecordLog",
+    "pages/my/DeclarationRecord/electricity/electricity",
+    "pages/my/DeclarationRecord/electricity/remarks/remarks",
+    "pages/my/ElectricityBill/ElectricityBill",
+    "pages/my/ElectricityBill/up/up",
+    "pages/my/user/user",
+    "pages/my/user/userAdd/userAdd",
+    "pages/my/user/userChange/userChange",
+
+    "pages/chat/chat"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#0089F0",
+    "navigationBarTitleText": "众企联合售电云平台",
+    "navigationBarTextStyle":"#FFFFFF"
+  }, 
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#4a90e2",
+    "borderStyle": "#4a90e2",
+    "backgroundColor": "#fff",
+    "box-shadow": "0 0 6px 0",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon_home_line.png",
+        "selectedIconPath": "images/icon_home_solid.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/monitoring/monitoring",
+        "iconPath": "images/icon_monitor_line.png",
+        "selectedIconPath": "images/icon_monitor_solid.png",
+        "text": "监控"
+      },
+      {
+        "pagePath": "pages/analyze/analyze",
+        "iconPath": "images/icon_analysis_line.png",
+        "selectedIconPath": "images/icon_analysis_solid.png",
+        "text": "分析"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "images/icon_me_line.png",
+        "selectedIconPath": "images/icon_me_solid.png",
+        "text": "我的"
+      }
+    ]
+  }  
+}

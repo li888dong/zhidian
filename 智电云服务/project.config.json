@@ -1,0 +1,59 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.7.2",
+	"appid": "wxe33218228d719a0a",
+	"projectname": "%E6%98%93%E9%87%87%E6%99%BA%E7%94%B5",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "监控",
+					"pathName": "pages/monitoring/monitoring",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "addd",
+					"pathName": "pages/my/user/userAdd/userAdd",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "user",
+					"pathName": "pages/my/user/user",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "分析",
+					"pathName": "pages/analyze/analyze",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "电费单上传",
+					"pathName": "pages/my/ElectricityBill/up/up",
+					"query": ""
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_contacts</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的企业" transform="translate(-31.000000, -1819.000000)" fill-rule="nonzero" fill="#888888">
+            <g id="表单/选择/多行列表-" transform="translate(0.000000, 1705.000000)">
+                <g id="列表二" transform="translate(1.000000, 88.000000)">
+                    <g id="联系人" transform="translate(30.000000, 26.000000)">
+                        <path d="M18.19386,22.77252 C12.58794,22.78134 8.8497,15.2604 8.8497,11.22138 C8.8497,7.18236 8.86644,0 18.19386,0 C27.52254,0 27.53838,7.18164 27.53838,11.22066 C27.53838,15.25968 23.80086,22.7637 18.19386,22.77252 Z M33.58746,28.45764 C34.68708,29.31894 35.46234,30.66174 36,31.97718 L36,36 L1.77635684e-15,36 L1.77635684e-15,32.18328 C0.55458,30.73914 1.3284,29.2536 2.34522,28.45746 C4.73238,26.58924 11.61144,23.48244 11.61144,23.48244 L15.9543,31.79286 L16.74342,29.77794 L15.51924,27.29268 L17.9667,24.80796 L20.41344,27.29268 L19.19106,29.77794 L19.85328,31.7466 L24.32034,23.48262 C24.32034,23.48262 31.20048,26.58834 33.58746,28.45764 Z" id="icon_contacts"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

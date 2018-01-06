@@ -1,0 +1,38 @@
+<!--pages/my/ElectricityBill/ElectricityBill.wxml-->
+<view class='page'>
+  <view class='page__bd'>
+    <view class="itemBox" wx:for="{{datas}}" wx:key="{{index}}">
+      <view class="itemTitle {{isShow == index ? 'openColor' : 'outColor'}}" style='color: #999;font-size: 12pt;'>{{item.month}}
+        <view class="fr" bindtap='changeStatus' data-isMonths="{{item.month}}" data-index="{{index}}" class='tagOpen'>{{isShow == index ? '收起' : '展开'}} <text class="iconfont {{isShow == index ? 'icon-jiankuohao-xi-shang' : 'icon-jiankuohaoxixia'}}"></text></view>
+      </view>
+      <view class="itemBody" wx:if="{{isMonths == item.month}}" wx:for="{{item.data}}" wx:key="index" wx:for-item="userList">
+        <view class='itemTop'>
+          <view class='fl'>
+            <text class='grayFont'>户号:</text> {{userList.user_no}}</view>
+          <text class="iconfont icon-tupian fr {{userList.ebpic.length !== 0 ? 'isHave' : 'isNo'}}" bindtap='showPic' data-pic="{{userList.ebpic}}"></text>
+        </view>
+        <view class='itemMain'>
+          <view class='items'>
+            <text class='fl'>电费金额：</text>
+            <text class='fr' style='color: #EE908A;font-size:14pt;'>{{userList.price}} <text class='grayFont'>元</text></text>
+          </view>
+          <view class='items'>
+            <text class='fl'>用电量: </text>
+            <text class='fr' style='color: #7EC249;'>{{userList.used_num}} <text class='grayFont'>Mw.h</text></text>
+          </view>
+        </view>
+        <view class='itemBottom'>
+          <view class='fl'>
+            <image src="{{ userList.info.imgurl ? userList.info.imgurl : ''}}" class='bPic'></image>
+            {{userList.info.fullname ? userList.info.fullname : '暂无'}}
+            <text class='grayFont'>上传</text>
+          </view>
+          <text class='fr grayFont'> {{userList.created_at}}</text>
+        </view>
+      </view>
+    </view>
+    <navigator url='up/up'>
+      <button class='upBtn'>上传电费单</button>
+    </navigator>
+  </view>
+</view>

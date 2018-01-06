@@ -1,0 +1,12 @@
+<!--pages/my/DeclarationRecord/electricity/remarks/remarks.wxml-->
+<view class='page'>  
+  <view class="weui-cell">
+      <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请填写备注" focus style="height: 3.3em" value='{{textLog}}'  bindinput="bindDateChange"/>
+          <!-- <view class="weui-textarea-counter">0/200</view> -->
+      </view>
+  </view>
+  <view class='bottoms'>
+    <button bindtap='clickOk'>提交填写</button>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+<!--pages/my/DeclarationRecord/DeclarationRecord.wxml-->
+
+<view class='page'>
+  <view class='page__bd'>
+  <block wx:for="{{logData}}" wx:key="index">
+    <view class='itemBox'>
+      <view class="itemTitle" style='color: #999; font-size: 12pt;'>{{item.month}}</view>
+      <view class='itemBody' wx:for="{{item.data}}"  wx:key="index"  wx:for-item="log">
+        <view data-id='{{log.id}}' bindtap='chartLog'>
+          <view class='itemTop'>
+            <view class='fl'><text class='grayFont'>合计</text></view>
+            <view class='fr' style='color: #7EC249;font-size:14pt;'>{{log.sbdl}} <text class='grayFont'>Mw.h</text></view>
+          </view>
+          <view class='itemMain'>
+            <view class='items' wx:for="{{log.sbdlinfo}}" wx:key="index" wx:for-item="userno">
+              <text class='fl'>{{userno.user_no}}</text>
+              <text class='fr'>{{userno.elec}} <text class='grayFont'>Mw.h</text></text>
+            </view>
+          </view>
+          <view class='itemBottom'>
+            <view class='fl'>
+              <image class='bPic'></image>
+              <text class='grayFont'> {{index == 0 ? '最后申报人' : '申报人'}}</text> {{log.last_declare_declarant ? log.last_declare_declarant : '暂无'}}</view>
+            <text class='fr grayFont'>  {{log.created_at}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+    <navigator url='electricity/electricity'><button class='upBtn'>现在申报</button></navigator>
+  </view>
+</view>

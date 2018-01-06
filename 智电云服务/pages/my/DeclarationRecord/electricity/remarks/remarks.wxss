@@ -1,0 +1,12 @@
+/* pages/my/DeclarationRecord/electricity/remarks/remarks.wxss */
+.page {
+  padding: 30rpx
+}
+.page button{
+  margin-top: 30rpx;
+  background-color: #0089f0;
+  color: #fff;
+}
+.weui-cell {
+  background-color: #fff;
+}

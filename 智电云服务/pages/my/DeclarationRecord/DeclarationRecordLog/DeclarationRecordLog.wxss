@@ -1,0 +1,50 @@
+/* pages/my/DeclarationRecord/DeclarationRecord.wxss */
+
+.page__bd {
+  font-size: 10pt;
+}
+
+.itemTitle {
+  font-size: 10pt;
+  margin-bottom: 10rpx;
+}
+
+.itemBox {
+  position: relative;
+  overflow: auto;
+}
+view {
+  overflow: hidden;
+}
+.itemBody {
+  padding: 10rpx 30rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.grayFont {
+  color: #ccc;
+  font-size: 10pt;
+}
+.itemMain {
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  line-height: 50rpx;
+  padding: 10rpx 0;
+}
+.bPic {
+  width: 50rpx;
+  height: 50rpx;
+  background-color: #ccc;
+  border-radius: 50%;
+  vertical-align: top;
+}
+.itemBottom {
+  line-height: 50rpx;
+  padding: 10rpx 0;
+}
+.bottoms textarea {
+  background-color: #fff;
+  padding: 15rpx;
+  box-sizing: border-box;
+}

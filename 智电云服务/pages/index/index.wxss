@@ -1,0 +1,81 @@
+.page__hd {
+  background-color: #ffffff;
+  height: 442rpx;
+}
+.canvas {
+  height: 442rpx;
+}
+.weui-flex__item {
+  height: 124rpx;
+}
+.topLeft ,.topRight {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  line-height: 110rpx;
+  text-align: center;
+  border: 3px solid #f8f8f8;
+  position: absolute;
+  bottom: 82rpx;
+  font-size: 10pt;
+  color: #ccc;
+}
+.topLeft {
+  left: 30rpx;
+}
+.topRight {
+  right: 30rpx;
+}
+.leftBar, .rightBar{
+  width: 90rpx;
+  height: 20rpx;
+  border-radius: 36%;
+  background-color: #6ec71e;
+  display: inline-block;
+  position: absolute;
+  top: 60%;
+  left: 22%;
+}
+.rightBar {
+  background-color: #4FA8F9;  
+}
+.electricityDate {
+  margin-top: 15rpx;
+  margin-left: -10rpx;
+}
+.mainNav {
+  background-color: #fff;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+}
+.mainNav view{
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 10pt;
+  border-right: 1px solid #f2f2f2;
+}
+.navIcon {
+  width: 86rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  font-size: 25pt;
+  background-color: #0089f0;
+  color: #fff;
+  border-radius: 15rpx;
+  display: block;
+  margin-left: 25%;
+  margin-bottom: 10rpx;
+}
+.mainNav view:last-child{
+  border-right: 0;
+}
+.mainNav .placeholder {
+  padding: 0;
+  border: 0;
+}
+
+.yueduCanvas {
+  height: 380rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}

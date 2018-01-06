@@ -1,0 +1,53 @@
+/* pages/my/user/user.wxss */
+.weui-cell {
+  background-color: #fff;
+}
+.weui-cell__ft_in-access:after {
+  position: absolute;
+  transform: rotate(135deg)
+}
+.userPic {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #f2f2f2;
+  font-size: 22pt;
+  text-align: center;
+  line-height: 50px;
+}
+.upBtn {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #0089f0;
+  color: #fff;
+  width: 100%;
+  border-radius: 0;
+}
+.weui-flex {
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+}
+.weui-flex view {
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  color: #888888;
+}
+.weui-cell__ft_in-access {
+  padding-right: 20px;
+}
+
+.weui-cell__ft_in-access {
+  width: 20px;
+  height: 20px;
+}
+.closeBox {
+  display: none;
+}
+/* 用户下方修改盒子样式 */
+ .active.weui-cell__ft_in-access:after {
+  transform: rotate(-45deg);
+} 
+
+.change {
+  display: flex;
+}

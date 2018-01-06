@@ -1,0 +1,110 @@
+page {
+  overflow: hidden;
+}
+.page {
+  /* page 和。page都是设置height：100%；overflow：hidden 解决overflow失效问题 */
+  height: 100%;
+  overflow: hidden;
+}
+.canvas{
+  height: 368rpx;
+  padding-top: 30rpx;
+}
+
+/* 顶部下拉导航样式 */
+.topNav {
+  height: 80rpx;
+  line-height: 80rpx;
+  z-index: 99;
+  position: relative;  
+}
+.weui-flex__item {
+  text-align: center;
+  height: 64rpx;
+}
+.active {
+  color: #0089F0;
+} 
+.active .triangle{
+  transform: rotate(180deg);
+  position: absolute;
+}
+.selectHuhao {
+  width: 33.333%;
+  float: left;
+}
+.isShows {
+  width: 100%;
+  display: block;
+  margin-bottom: 1000rpx;
+}
+.isCloses {
+  display: none
+}
+.allStyle {
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+  z-index: 99;
+}
+.weui-flex__item2 {
+  width: 33.333%;
+  float: left;
+  text-align: center;
+}
+.weui-flex__item2 view{
+  padding: 10rpx 15rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.huiSe {
+  color: #888888;
+  font-size: 11pt;
+  border-bottom: 2px solid #f2f2f2;
+}
+.active2{
+  color: #0089F0;
+  font-size: 11pt;
+  border-bottom: 2px solid #0089F0;
+}
+.allStyle .weui-btn {
+  width: 100%;
+  background-color: #0089F0;
+  border-radius: 0;
+}
+.dateSel {
+  background-color: #ffffff;
+  position: relative;
+  z-index: 99;
+  /* padding: 10rpx 30rpx; */
+}
+
+/* 遮罩层  */
+.fullbg{
+    position: fixed;
+    top:0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(1, 1, 1, 0);
+    transition: all 1s;
+    display: none;
+}
+.fullopacity{
+    background: rgba(1, 1, 1, 0.6);
+    display: block;
+}
+/* .dateSel view:hover{
+  background-color: #f2f2f2;
+} */
+
+/* 导航点击户号终端的背景颜色 */
+.activeColor view{
+  font-size: 11pt;
+  color: #888888;
+}
+.beClickColor {  
+  background-color: #f2f2f2;
+}
+

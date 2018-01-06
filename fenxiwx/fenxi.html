@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分析</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #f2f2f2;
+        }
+        p, .allBox {
+            background-color: #fff;
+        }
+        .top {
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+        }
+        .navTop {
+            display: flex;
+        }
+        .navTop div{
+            flex: 1;
+            text-align: center;
+            border-bottom: 1px solid #f2f2f2;
+            height: 32px;
+        }
+        .navTop .navTopActive {
+            color: #0089f0;
+            border-bottom: 3px solid #0089F0;
+        }
+        .mians {
+            display: flex;
+
+        }
+        .mians div{
+            flex: 1;
+            text-align: center;
+            line-height: 30px;
+        }
+        .sanjiao{
+            font-size: 12px;
+            line-height: 1;
+        }
+        .sjRo{
+            transform: rotate(90deg);
+            position: absolute;
+            top: 16px;
+            margin-left: 4px;
+        }
+        .allBox {
+            display: none;
+            z-index: 99;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%
+        }
+        .allBoxShow {
+            display: block;
+        }
+        .zhezhao{
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 11;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .zhezhaoShow{
+            display: block;
+        }
+        .btn {
+            width: 100%;
+            height: 40px;
+            background-color: #0089f0;
+            border: none;
+            color: #fff;
+        }
+        .navClick {
+            background-color: #f2f2f2;
+        }
+        .tittles{
+            padding:5px 7.5px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            background-color: #f2f2f2;
+            font-size: 11pt;
+            margin-top:.77em;
+            margin-bottom:.3em;
+            padding-left:15px;
+            padding-right:15px;
+            color:#999;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <!-- <script src="./axios.min.js"></script> -->
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts-en.common.js"></script>
+</head>
+<body>
+    <p class="top">综合 <span class="sanjiao">▶</span></p>
+    
+    <div class="allBox">
+        <div class="navTop">
+            <div class="navL navTopActive">
+                综合
+            </div>
+            <div class="navM">
+                户号
+            </div>
+            <div class="navR">
+                终端
+            </div>
+        </div>
+        <div class="mians">
+            <div class="left">
+                <div class="navClick">
+                    综合
+                </div>
+            </div>
+            <div class="center">
+            </div>
+            <div class="right">
+                <!-- <div>
+                    李四厂A组电表
+                </div> -->
+            </div>
+        </div>
+        <button class="btn">确认</button>
+    </div>
+    <div class="zhezhao"></div>
+    <p class="tittles">日电量指数对比</p>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 100%;height:200px;" class="canvas"></div>
+    <p class="tittles">月电量指数对比</p>
+    <div id="main2" style="width: 100%;height:200px;" class="canvas"></div>
+
+
+
+    <script>
+    $(document).ready(function(){
+        $.ajax({
+            url: 'https://www.cx8o92.cn/oauth/token',
+            method: "POST",
+            data: {
+                'grant_type': 'client_credentials',
+                'client_id': 1,
+                'client_secret': 'IRwipTloBj54dYeznekQt2shYHaTrmeIIRXq0bQb'
+            },
+            success: function(data){                
+                let token = data.access_token;
+                console.log(token)
+                show(token)
+            },
+            error: function(err){ 
+                console.log("error"); 
+            },
+        })
+        function show(token){
+            $(".top").click(function(){
+                // $(this).hide();
+                $(".sanjiao").toggleClass('sjRo')
+                $(".allBox").toggleClass('allBoxShow')
+                $(".zhezhao").toggleClass('zhezhaoShow')
+            });
+            //记录点击
+            var clickStatus = 1;
+            //终端号
+            var client = '';
+            let cus_id = (window.location.search.substr(1).split("=")[1]);            
+            getAll(cus_id)
+            //获取户号
+            $.ajax({
+                url: "https://www.cx8o92.cn/api/customers/wiringdiagram",
+                method: "POST",
+                data: {'cus_id': cus_id },
+                success: function(data){ 
+                    console.log(data.data);
+                    
+                    data.data.forEach(e => {
+                        let arr =[];
+                        e.clientids.forEach(k => {
+                            arr.push(k.clientid)
+                        });
+                        // console.log(arr)
+                        $('.center').append('<div data-userno='+arr+'>'+ e.user_no +'</div>')
+                    });
+                    //导航点击切换效果
+                    $(".left > div").click(function(){
+                        // console.log(this)
+                        clickStatus = 1;
+                        $(".left > div").addClass('navClick ');
+                        $(".navL").addClass('navTopActive ');
+                        $(".navM").removeClass('navTopActive ');
+                        $(".navR").removeClass('navTopActive ');
+                        $(".center > div").removeClass('navClick ');
+                        $(".right > div").removeClass('navClick ');
+                        $('.btn').attr("disabled", false); 
+                    });
+                    $(".center > div").click(function(){
+                        $(this).siblings().removeClass('navClick ');
+                        $(this).addClass('navClick');
+                        $(".left > div").removeClass('navClick ');
+                        $(".right > div").removeClass('navClick ');
+                        $(".navL").removeClass('navTopActive ');
+                        $(".navM").addClass('navTopActive ');
+                        $(".navR").removeClass('navTopActive ');
+                        $('.btn').attr("disabled", true); 
+
+                        //每次点击清空右侧子元素
+                        $(".right").empty();
+                        // console.log(this.dataset.userno.split(','))
+                        let clientid = this.dataset.userno.split(',');
+                        
+                        clientid.map(function(i){
+                            $('.right').append('<div data-clientid=' + i + '>'+ i +'</div>')
+                        })
+                        //写在这里面是应对动态添加的数据异步事件绑定
+                        $(".right > div").click(function(){
+                            // console.log(this)
+                            clickStatus = 2;
+                            client = this.dataset.clientid;
+                            $('.btn').attr("disabled", false); 
+                            $(this).siblings().removeClass('navClick ');
+                            $(this).addClass('navClick');
+                            $(".left > div").removeClass('navClick ');
+                            $(".navL").removeClass('navTopActive ');
+                            $(".navM").removeClass('navTopActive ');
+                            $(".navR").addClass('navTopActive ');                                                    
+                        });
+                    });
+                    
+                },
+                error: function(err){ 
+                    console.log("error"); 
+                },                
+                beforeSend: function(xhr){
+                    xhr.setRequestHeader('authorization', token)
+                },
+            });
+            //导航确定点击效果
+            $('.btn').click(function(clientid){
+                $(".sanjiao").toggleClass('sjRo')
+                $(".allBox").toggleClass('allBoxShow')
+                $(".zhezhao").toggleClass('zhezhaoShow')
+                if(clickStatus === 1){
+                    getAll()
+                    console.log(clickStatus)
+                }else{
+                    getZd(client)
+                    console.log(clickStatus)
+                    console.log(client)
+                }
+            })
+            //获取综合数据
+            function getAll(cus_id){
+                $.ajax({
+                    url: "https://www.cx8o92.cn/api/devanalysis/comparison",
+                    method: "POST",
+                    data: {'cus_id': cus_id },
+                    success: function(data){ 
+                        // console.log(data);
+                        let datas = data.data;
+                        //日用电量数据
+                        let dayUse = datas[0];
+                        var dayUseDate = [];
+                        var dayUseYear = [];
+                        var dayUseRatio = [];
+                        for(let i in dayUse){
+                            // console.log(i)
+                            dayUseDate.push(i);
+                            dayUseYear.push(dayUse[i].year);
+                            dayUseRatio.push(dayUse[i].ratio)
+                        }
+
+                        // console.log(dayUse,dayUseYear,dayUseRatio)
+                        //用用电量数据
+                        let monthUse = datas[1];
+                        var monthUseDate = [];
+                        var monthUseYear = [];
+                        var monthUseRatio = [];
+                        for(let i in monthUse){
+                            // console.log(i)
+                            monthUseDate.push(i);
+                            monthUseYear.push(monthUse[i].year);
+                            monthUseRatio.push(monthUse[i].ratio)
+                        }
+
+                        // console.log(monthUse,monthUseYear,monthUseRatio)
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart = echarts.init(document.getElementById('main'));
+                        var myChart2 = echarts.init(document.getElementById('main2'));
+                        // 指定图表的配置项和数据
+                        var option1 = {                            
+                            grid: {  
+                                left: '2%',  
+                                right: '2%',  
+                                bottom: '2%',
+                                containLabel: true  
+                            },
+                            color: ['#4f8af9', '#6ec71e'],
+                            backgroundColor: '#fff',
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross'
+                                }
+                            },
+                            legend: {
+                                data:['日用电量', '同比增长率'],
+                                align: 'left',
+                                top:20,
+                                left: 0,
+                                itemWidth:16,
+                                itemHeight:16
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    data: dayUseDate
+                                }
+                            ],
+                            yAxis: [                            
+                                {
+                                    type: 'value',
+                                    position: 'left',
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                },
+                                {
+                                    type: 'value',
+                                    name: '单位 Mw.h',
+                                    position: 'right',
+                                    axisLabel: {
+                                        formatter: '{value} %'
+                                    }
+                                },
+                            ],
+                            series: [
+                                {
+                                    name:'日用电量',
+                                    type:'bar',
+                                    data: dayUseYear
+                                },
+                                {
+                                    name:'同比增长率',
+                                    type:'line',
+                                    yAxisIndex: 1,
+                                    data: dayUseRatio
+                                }
+                            ]
+                        };
+                        var option2 = {
+                            grid: {  
+                                left: '2%',  
+                                right: '2%',  
+                                bottom: '2%',
+                                containLabel: true  
+                            },
+                            color: ['#4f8af9', '#6ec71e'],
+                            backgroundColor: '#fff',
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross'
+                                }
+                            },
+                            legend: {
+                                data:['月用电量', '同比增长率'],
+                                align: 'left',
+                                top:20,
+                                left: 0,
+                                itemWidth:16,
+                                itemHeight:16
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    data: monthUseDate
+                                }
+                            ],
+                            yAxis: [                            
+                                {
+                                    type: 'value',
+                                    position: 'left',
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                },
+                                {
+                                    type: 'value',
+                                    name: '单位 Mw.h',
+                                    position: 'right',
+                                    axisLabel: {
+                                        formatter: '{value} %'
+                                    }
+                                },
+                            ],
+                            series: [
+                                {
+                                    name:'月用电量',
+                                    type:'bar',
+                                    data: monthUseYear
+                                },
+                                {
+                                    name:'同比增长率',
+                                    type:'line',
+                                    yAxisIndex: 1,
+                                    data: monthUseRatio
+                                }
+                            ]
+                        };   
+
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart.setOption(option1);
+                        myChart2.setOption(option2);
+                    },
+                    error: function(err){ 
+                        console.log("error"); 
+                    },                
+                    beforeSend: function(xhr){
+                        xhr.setRequestHeader('authorization', token)
+                    },
+                });
+            }
+            //获取终端数据
+            function getZd(client){
+                $.ajax({
+                    url: "https://www.cx8o92.cn/api/devanalysis/comparison",
+                    method: "POST",
+                    data: {'clientid': client },
+                    success: function(data){ 
+                        console.log(data);
+                        let datas = data.data;
+                        //日用电量数据
+                        let dayUse = datas[0];
+                        var dayUseDate = [];
+                        var dayUseYear = [];
+                        var dayUseRatio = [];
+                        for(let i in dayUse){
+                            dayUseDate.push(i);
+                            dayUseYear.push(dayUse[i].year);
+                            dayUseRatio.push(dayUse[i].ratio)
+                        }
+                        //用用电量数据
+                        let monthUse = datas[1];
+                        var monthUseDate = [];
+                        var monthUseYear = [];
+                        var monthUseRatio = [];
+                        for(let i in monthUse){
+                            monthUseDate.push(i);
+                            monthUseYear.push(monthUse[i].year);
+                            monthUseRatio.push(monthUse[i].ratio)
+                        }
+                        // 基于准备好的dom，初始化echarts实例
+                        var myChart = echarts.init(document.getElementById('main'));
+                        var myChart2 = echarts.init(document.getElementById('main2'));
+                        // 指定图表的配置项和数据
+                        var option1 = {
+                            grid: {  
+                                left: '2%',  
+                                right: '2%',  
+                                bottom: '2%',
+                                containLabel: true  
+                            },
+                            color: ['#4f8af9', '#6ec71e'],
+                            backgroundColor: '#fff',
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross'
+                                }
+                            },
+                            legend: {
+                                data:['日用电量', '同比增长率'],
+                                align: 'left',
+                                top:20,
+                                left: 0,
+                                itemWidth:16,
+                                itemHeight:16
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    data: dayUseDate
+                                }
+                            ],
+                            yAxis: [                            
+                                {
+                                    type: 'value',
+                                    position: 'left',
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                },
+                                {
+                                    type: 'value',
+                                    name: '单位 Mw.h',
+                                    position: 'right',
+                                    axisLabel: {
+                                        formatter: '{value} %'
+                                    }
+                                },
+                            ],
+                            series: [
+                                {
+                                    name:'日用电量',
+                                    type:'bar',
+                                    data: dayUseYear
+                                },
+                                {
+                                    name:'同比增长率',
+                                    type:'line',
+                                    yAxisIndex: 1,
+                                    data: dayUseRatio
+                                }
+                            ]
+                        };
+                        var option2 = {
+                            grid: {  
+                                left: '2%',  
+                                right: '2%',  
+                                bottom: '2%',
+                                containLabel: true  
+                            },
+                            color: ['#4f8af9', '#6ec71e'],
+                            backgroundColor: '#fff',
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'cross'
+                                }
+                            },
+                            legend: {
+                                data:['月用电量', '同比增长率'],
+                                align: 'left',
+                                top:20,
+                                left: 0,
+                                itemWidth:16,
+                                itemHeight:16
+                            },
+                            xAxis: [
+                                {
+                                    type: 'category',
+                                    axisTick: {
+                                        alignWithLabel: true
+                                    },
+                                    data: monthUseDate
+                                }
+                            ],
+                            yAxis: [                            
+                                {
+                                    type: 'value',
+                                    position: 'left',
+                                    axisLabel: {
+                                        formatter: '{value}'
+                                    }
+                                },
+                                {
+                                    type: 'value',
+                                    name: '单位 Mw.h',
+                                    position: 'right',
+                                    axisLabel: {
+                                        formatter: '{value} %'
+                                    }
+                                },
+                            ],
+                            series: [
+                                {
+                                    name:'月用电量',
+                                    type:'bar',
+                                    data: monthUseYear
+                                },
+                                {
+                                    name:'同比增长率',
+                                    type:'line',
+                                    yAxisIndex: 1,
+                                    data: monthUseRatio
+                                }
+                            ]
+                        };   
+
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart.setOption(option1);
+                        myChart2.setOption(option2);
+                    },
+                    error: function(err){ 
+                        console.log("error"); 
+                    },                
+                    beforeSend: function(xhr){
+                        xhr.setRequestHeader('authorization', token)
+                    },
+                });
+            }
+        }
+    });        
+    </script>
+</body>
+</html>

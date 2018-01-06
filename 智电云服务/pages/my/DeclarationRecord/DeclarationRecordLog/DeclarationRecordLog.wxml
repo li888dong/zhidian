@@ -1,0 +1,32 @@
+<!--pages/my/DeclarationRecord/DeclarationRecordLog/DeclarationRecordLog.wxml-->
+<view class='page'>
+  <view class='page__bd'>
+    <view class='itemBox'>
+      <view class='weui-cells__title'>{{dataLog.month}}月</view>
+      <view class='itemBody'>
+        <navigator url='DeclarationRecordLog/DeclarationRecordLog'>
+          <view class='itemTop'>
+            <view class='fl'><text class='grayFont'>合计</text></view>
+            <view class='fr' style='color: #7EC249;font-size:14pt;'>{{dataLog.sbdl}} <text class='grayFont'>Mw.h</text></view>
+          </view>        
+          <view class='itemMain'>
+            <view class='items' wx:for="{{dataLog.sbdlinfo}}" wx:key="{{index}}">
+              <text class='fl'>{{item.user_no}}</text>
+              <text class='fr'>{{item.elec}} <text class='grayFont'>Mw.h</text></text>
+            </view>
+          </view>
+          <view class='itemBottom'>
+            <view class='fl'>
+              <image class='bPic'></image>
+              <text class='grayFont'> 申报人</text> {{dataLog.confirmor ? dataLog.confirmor : '暂无'}}</view>
+            <text class='fr grayFont'> {{dataLog.created_at}}</text>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view class="bottoms">
+      <view class='weui-cells__title'>备注信息</view>
+      <textarea class="weui-textarea" placeholder="无备注" disabled='true' style="height: 6.6em" value="{{dataLog.remarks}}"/>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,76 @@
+page{
+  /* 这个100%可以解决高度撑满的问题 */
+  height: 100%;
+  background-color: #f2f2f2;
+  font-family: Helvetica, Arial, "Helvetica Neue", "Droid Sans", "Microsoft YaHei", sans - serif;
+}
+.page {
+  position: relative;
+  font-size: 12pt;
+  box-sizing: border-box;
+}
+.page__hd{
+  position: relative;
+}
+.page__bd{
+  position: relative;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+.grayFont {
+  color: #ccc;
+  font-size: 10pt;
+}
+.fff{
+  background-color: #FFFFFF;
+}
+.borders{
+  border-right: 1px solid #f2f2f2; 
+}
+.mg_b15 {
+  margin-bottom: 15px;
+}
+/* canvas全屏样式 */
+.canvas {
+  width: 100%;
+  background-color: #fff;
+}
+/* 页面确认提交按钮背景色 */
+.page .weui-btn {
+  background-color: #0089f0;
+}
+/* 流式布局背景 */
+.weui-flex {
+  background-color: #fff;
+  text-align: center;
+}
+.weui-cells {
+  font-size: 11pt;
+}
+/* svg图标样式 */
+.svgPic {
+  margin-right: 5px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  width:16px; 
+  height: 16px;
+}
+/* iconfont图标样式 */
+.iconPic {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  font-size:16pt;
+  color: #888888;
+  line-height:20px;
+}
+/* button 禁用样式 */
+button[disabled][type="primary"] {
+  background-color: #0089F0;
+  color: #fff;
+  opacity: 0.6
+}

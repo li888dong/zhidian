@@ -1,0 +1,59 @@
+<!--pages/my/DeclarationRecord/electricity/electricity.wxml-->
+<view class='page'>
+  <view class='page__bd'>
+    <view class='top'>
+      <view class="weui-cells__title">申报参考数据</view>
+      <canvas canvas-id="charts" class="canvas" bindtouchstart="touchHandler"></canvas>
+    </view>
+    <view class="weui-cells__title">申报{{nextmonth}}月份电量</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__hd">
+          <image class='iconfont icon-kefu iconPic'></image>
+        </view>
+        <view class="weui-cell__bd" bindtap="open">拨打售电客服电话</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </view>
+    <view class='form'>
+      <view class='danwei'>单位: Mw.h</view>
+      <view class="inputBox weui-cells weui-cells_after-title">
+        <block wx:for="{{user_noList}}" wx:key="index">
+          <view class="weui-cell weui-cell_input" style='padding-top:20rpx;'>
+            <view class="weui-cell__hd">
+              <view class="weui-label">{{item}}:</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" type='digit' id="delcare{{index}}" maxlength='13' placeholder="请输入月份预估电量" bindinput="inputDeclare"/>
+            </view>
+          </view>
+        </block>
+
+        <view class="weui-cell weui-cell_input" style='padding:20rpx'>
+          <view class="weui-cell__hd">
+            <view class="weui-label" style='text-align:center;'>总计:</view>
+          </view>
+          <view class="weui-cell__bd">
+            {{user_total}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="beizhu" bindtap='toRemarks'>
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">备注信息</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access" >{{remarksStatus}}</view>
+      </view>
+    </view>
+    <view class='bottoms'>
+      <view>
+        注:
+        <view>1.请参考上方数据信息，认真严谨计算，得出12月份预估电量；</view>
+        <view>2.多次申报电量记录偏差过大,将会影响您企业的信誉；</view>
+        <view>3.您可以在申报期内多次申报，且以最后一次为准；</view>
+        <view>4.如果您不太善于预测用电量，请与您的售电服务公司联系。</view>
+      </view>
+      <button bindtap='submit'>提交申报</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,137 @@
+<view class='page'>
+  <view class='page__hd' style='margin-bottom: 15px;'>
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image class="weui-media-box__thumb" src="{{upic}}" style='background-color:#eee;'/>
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">{{uInfo.fullname}}</view>
+              <view class="weui-media-box__desc">{{uInfo.cus_name}}</view>
+            </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='page__bd'>
+    <view class="weui-panel weui-panel_access" style='margin-bottom: 15px;'>
+      <view class="weui-cells weui-cells_after-title">
+          <navigator url="myCompany/myCompany" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd">
+                  <image src='/images/svg/me_icon_mycompany.svg' class='svgPic'></image>
+              </view>
+              <view class="weui-cell__bd">我的企业</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access">预估年用电量 {{uInfo.year_used}}万Mw.h</view>
+          </navigator>
+      </view>
+    </view>
+    <view class="weui-panel weui-panel_access" style='margin-bottom: 15px;'>
+      <view class="weui-cells weui-cells_after-title">
+          <navigator url="DeclarationRecord/DeclarationRecord" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd">
+                  <image src='/images/svg/me_icon_myrecord.svg' class='svgPic'></image>
+              </view>
+              <view class="weui-cell__bd">申报记录</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access">本月{{uInfo.declare === 0 ? '未' : '已'}}申报</view>
+          </navigator>
+          <navigator url="ElectricityBill/ElectricityBill" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd">
+                  <image src='/images/svg/me_icon_mypowerate.svg' class='svgPic'></image>
+              </view>
+              <view class="weui-cell__bd">电费单管理</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access">本月{{uInfo.ebill === 0 ? '未' : '已'}}上传</view>
+          </navigator>
+      </view>
+    </view>
+    <view class="weui-panel weui-panel_access" style='margin-bottom: 15px;'>
+      <view class="weui-cells weui-cells_after-title">
+          <navigator url="user/user" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd">
+                  <image src='/images/svg/me_icon_user_management.svg' class='svgPic'></image>
+              </view>
+              <view class="weui-cell__bd">用户管理</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 
+<view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+  <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+      <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
+          <navigator url="{{page}}/{{page}}" class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">{{page}}</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </navigator>
+      </block>
+  </view>
+</view> -->
+    <!-- <view class='itemTab'>
+      我的企业
+    </view>
+    <view class='itemTab logItemTab'>
+      <view class='subItemTab'>
+        申报记录
+      </view>
+      <view class='subItemTab'>
+        电费单管理
+      </view>   
+    </view>
+    <view class='itemTab'>
+      用户管理
+    </view>
+    <view class='itemTab'>
+      设置
+    </view> -->
+
+
+  <!-- <view class="userinfo">
+		<image wx:if="{{userInfo && userInfo.avatarUrl}}" class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"></image>
+		<text class="userinfo-nickname">{{ userInfo.nickName }}</text>
+	</view>
+  <view style="height:20rpx;background: #eee;width:100%;"></view>
+  <view class="my-item" style='background:none;display:flex;flex-direction:column;height:auto;'>
+    <view>
+      余额 {{balance}} 元， 冻结 {{freeze}} 元
+    </view>
+    <view style='display:flex;padding-bottom:20rpx;'>
+      <button type='primary' style='width:100%;margin-right:70rpx;' bindtap="recharge">充值</button>
+      <button type='warn' style='width:100%;margin-right:70rpx;' bindtap="withdraw">提现</button>
+    </view>
+  </view>
+  <view class="my-item" style='background:none;display:flex;'>
+    <view>当前积分 {{score}} </view>
+    <button wx:if="{{score_sign_continuous == 0}}" style='height:80rpx;margin-right:70rpx;' bindtap="scoresign">每日签到</button>
+    <button wx:if="{{score_sign_continuous > 0}}" disabled='true' style='height:80rpx;margin-right:70rpx;'>已连续{{score_sign_continuous}}天签到</button>
+  </view>
+  <view class="my-item">
+    <navigator url="/pages/order-list/index" hover-class="navigator-hover">我的订单</navigator>
+  </view>
+  <view class="my-item">
+    <navigator url="/pages/select-address/index" hover-class="navigator-hover">我的收货地址</navigator>
+  </view>
+  <view class="my-item">
+    <navigator url="/pages/mycoupons/index" hover-class="navigator-hover">我的优惠券</navigator>
+  </view>
+  <view wx:if="{{!userMobile}}" class="my-item" style="border:none;padding-right:150rpx;width:auto;">
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号码</button>
+  </view>
+  <view wx:if="{{userMobile}}" class="my-item" style="border:none;padding-right:150rpx;width:auto;">
+    {{userMobile}}
+  </view>
+  <view style="height:20rpx;background: #eee;width:100%;"></view>
+  <view class="about" bindtap="aboutUs">
+    关于我们
+  </view>
+
+  <view style="height:20rpx;background: #eee;width:100%;"></view>
+  <view class="my-item" style="border:none;padding:0rpx;margin:0rpx;background:none;border:none;height:auto;line-height:auto;">
+    <button type="warn" bindtap="relogin">重新登录</button>
+  </view>
+  
+  <view style="height:20rpx;background: #eee;width:100%;"></view>
+  <view class="version">Powered by EastWorld v {{version}}</view>
+  <view style="height:20rpx;background: #eee;width:100%;"></view> -->

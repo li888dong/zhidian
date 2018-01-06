@@ -1,0 +1,20 @@
+/* pages/my/myCompany/myCompany.wxss */
+
+.topNav {
+  border-top: 1px solid #f2f2f2;
+  padding: 20rpx 0;
+  text-align: center;
+}
+.linePic {
+  width: 100%;
+}
+
+.canvas {
+  height: 520rpx;
+}
+.address {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 60%;
+}

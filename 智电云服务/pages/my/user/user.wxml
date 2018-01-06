@@ -1,0 +1,28 @@
+<!--pages/my/user/user.wxml-->
+<view class='page'>
+  <view class='page__bd'>
+    <view class='userBox mg_b15' wx:for="{{cusList}}" wx:key="{{index}}">
+      <view class="weui-cell">
+        <view class="weui-cell__hd" style="position: relative;margin-right: 10px;">
+          <image src="{{item.imgurl}}" class='userPic iconfont icon-person'></image>
+        </view>
+        <view class="weui-cell__bd">
+          <view>{{item.fullname}}</view>
+          <view style="font-size: 13px;color: #888888;">{{item.last_logintime}}</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access {{isChangeId === item.id ? 'active' : ''}}" bindtap='changeShow' data-idShow="{{item.id}}" style='width:166rpx;height:88rpx;'></view>
+      </view>
+      <view class="weui-flex" wx:if="{{isChangeId === item.id}}">
+        <view class="weui-flex__item borders" data-id="{{item.id}}" data-name="{{item.fullname}}" data-mobel="{{item.mobile}}" bindtap="edit">
+          <view class="placeholder iconfont icon-xiugai"> 修改</view>
+        </view>
+        <view class="weui-flex__item borders">
+          <view class="placeholder iconfont icon-shanchu1" data-idDel="{{item.id}}" bindtap='delUser'> 删除</view>
+        </view>
+      </view>
+    </view>
+    <view>
+      <button class='upBtn' bindtap='toAddUser'>添加用户</button>
+    </view>
+  </view>
+</view>

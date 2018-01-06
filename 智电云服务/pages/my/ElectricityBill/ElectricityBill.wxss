@@ -1,0 +1,113 @@
+/* pages/my/ElectricityBill/ElectricityBill.wxss */
+.page{
+  padding-bottom: 50px;
+}
+
+
+.page__bd {
+  padding: 30rpx 30rpx 30rpx 20rpx;
+  font-size: 10pt;
+}
+
+.itemTitle {
+  font-size: 10pt;
+  margin-left: 40rpx;
+  margin-bottom: 20rpx;
+}
+.itemTitle::before{
+  content: ' ';
+  width: 25rpx;
+  height: 25rpx;
+  display: block;
+  position: absolute;
+  z-index: 11;
+  left: 4rpx;
+  top: 14rpx;
+  background-color: #0089f0;
+  border-radius: 50%;
+
+}
+.itemBox::after{
+  content: '';
+  width:1rpx;
+  height:auto;
+  position: absolute;
+  left:15rpx;
+  top: 50rpx;
+  bottom: 0;
+  background-color:#DFDFDF;
+}
+.itemBox {
+  position: relative;
+  overflow: auto;
+}
+.show{
+  display: block
+}
+.hide{
+  display: none
+}
+view {
+  overflow: hidden;
+}
+.itemBody {
+  padding: 10rpx 30rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-left: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.itemMain {
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  line-height: 50rpx;
+  padding: 10rpx 0;
+}
+.bPic {
+  width: 50rpx;
+  height: 50rpx;
+  background-color: #ccc;
+  border-radius: 50%;
+  vertical-align: top;
+}
+.itemBottom {
+  line-height: 50rpx;
+  padding: 10rpx 0;
+}
+.upBtn {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #0089f0;
+  color: #fff;
+  width: 100%;
+  border-radius: 0;
+  z-index: 1111;
+}
+.active{
+  display: none;
+}
+
+/* 是否有电费单 */
+.isHave{
+  color: #0089f0;
+}
+.isNo{
+  color: #888888;
+}
+
+.tagOpen{
+  color: #0089f0;
+  width: 250rpx;
+  text-align: right;
+  float: right;
+}
+
+.openColor::before{
+  background-color: #0089f0;
+}
+.outColor::before{
+  background-color: #ccc;
+}
